@@ -8,7 +8,7 @@ class DockingStation
   def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
     @capacity = capacity
-    raise 'invalid capacity' if invalid_capacity?
+    invalid_capacity?
   end
 
   def release_bike
@@ -37,6 +37,6 @@ class DockingStation
   end
 
   def invalid_capacity?
-    @capacity <= 0
+    raise 'invalid capacity' if @capacity <= 0
   end
 end
