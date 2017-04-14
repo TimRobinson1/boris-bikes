@@ -3,7 +3,7 @@ require 'bike'
 describe Bike do
 
   let(:bike) { double :bike, :broken? => false }
-  let(:broken_bike) { double("broken bike", :broken? => true) }
+  let(:broken_bike) { double :bike, :broken? => true }
 
   it { is_expected.to respond_to :working? }
   it { is_expected.to respond_to :report_broken }

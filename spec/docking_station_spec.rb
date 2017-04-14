@@ -11,6 +11,7 @@ describe DockingStation do
 
   it { is_expected.to respond_to :release_bike }
   it { is_expected.to respond_to :dock }
+  it { is_expected.to respond_to :load_van }
 
   describe 'capacity' do
 
@@ -34,6 +35,17 @@ describe DockingStation do
       expect{ DockingStation.new(-3) }.to raise_error 'invalid capacity'
     end
 
+  end
+
+  describe '#load_van' do
+    it 'produces broken bike' do
+      subject.dock(broken_bike)
+      expect(subject.load_van).to eq broken_bike
+    end
+
+    it 'raises error when loading no bikes' do
+    expect{subject.load_van}.to raise_error 'no broken bikes'
+    end
   end
 
   it 'gets a bike object' do
@@ -75,11 +87,6 @@ describe DockingStation do
     it 'releases bikes as single object' do
       subject.dock bike
       expect(subject.release_bike).to eq bike
-    end
-
-    it 'does not release broken bikes' do
-      subject.dock(broken_bike)
-      expect(subject.release_bike).to eq 'this bike is broken'
     end
   end
 
