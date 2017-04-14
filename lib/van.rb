@@ -1,5 +1,7 @@
 class Van
   attr_reader :cargo
+  DEFAULT_CAPACITY = 20
+
   def initialize
     @cargo = []
   end
@@ -9,9 +11,18 @@ class Van
     @cargo << bike
   end
 
+  def deliver_broken_bike
+    raise 'van is empty' if empty?
+    @cargo.pop
+  end
+
   private
 
   def full?
-    @cargo.length >= 20
+    @cargo.length >= DEFAULT_CAPACITY
+  end
+
+  def empty?
+    @cargo.empty?
   end
 end
