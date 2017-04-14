@@ -1,5 +1,5 @@
 class Bike
-  attr_reader :broken
+  attr_accessor :broken
 
   def initialize
     @broken = false

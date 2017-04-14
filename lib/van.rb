@@ -6,12 +6,12 @@ class Van
     @cargo = []
   end
 
-  def collect_broken_bike(bike)
+  def collect_bike(bike)
     raise 'van full' if full?
     @cargo << bike
   end
 
-  def deliver_broken_bike
+  def deliver_bike
     raise 'van is empty' if empty?
     @cargo.pop
   end
